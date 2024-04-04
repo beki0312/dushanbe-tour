@@ -1,7 +1,7 @@
 {
   "api": {
     "server": {
-      "port": ":8076",
+      "port": ":8070",
       "connectionCheckTime":10,
       "sessionExpirition": 300
     },

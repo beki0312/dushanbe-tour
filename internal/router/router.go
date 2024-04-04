@@ -35,13 +35,15 @@ func NewRouter(d dependencies) {
 	mainRoute.Use(generalMiddleware...)
 	courseRoute := mainRoute.PathPrefix("/v1").Subrouter()
 
-	log.Println("courseRoute=======> ", courseRoute)
+	courseRoute.HandleFunc("/get-language", d.Handler.GetLanguage()).Methods(http.MethodGet, http.MethodOptions)
+	courseRoute.Path("/get-category-infrastructure").Queries("id", "{id}").HandlerFunc(d.Handler.GetInfrastructure()).Methods(http.MethodGet, http.MethodOptions)
 
 	srv := http.Server{
-		Addr:    "127.0.5.24:53488", //os.Getenv("APP_PORT"), //d.SVC.ConfigInstance().GetString("api.server.port"),
+		Addr:    "8070",
 		Handler: server,
 	}
 	log.Println("srv  ", srv.Addr)
+	log.Println("srv  ", srv.Handler)
 	d.Lifecycle.Append(
 		fx.Hook{
 			OnStart: func(ctx context.Context) error {

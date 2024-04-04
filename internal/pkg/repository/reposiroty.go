@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"dushanbe_tour/internal/models"
 	"dushanbe_tour/internal/pkg/db"
 	"go.uber.org/fx"
 )
@@ -8,6 +9,8 @@ import (
 var NewRepository = fx.Provide(newRepository)
 
 type IRepository interface {
+	GeLanguage() (lang []models.Language, errs error)
+	GeInfrastructure(IdLanguage int64) (infrastruction []models.Infrastructure, errs error)
 }
 
 type dependencies struct {
