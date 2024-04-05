@@ -36,10 +36,11 @@ func NewRouter(d dependencies) {
 	courseRoute := mainRoute.PathPrefix("/v1").Subrouter()
 
 	courseRoute.HandleFunc("/get-language", d.Handler.GetLanguage()).Methods(http.MethodGet, http.MethodOptions)
+	courseRoute.HandleFunc("/get-infrastructure", d.Handler.GetCategoryInfrastructure()).Methods(http.MethodGet, http.MethodOptions)
 	courseRoute.Path("/get-category-infrastructure").Queries("id", "{id}").HandlerFunc(d.Handler.GetInfrastructure()).Methods(http.MethodGet, http.MethodOptions)
 
 	srv := http.Server{
-		Addr:    "8070",
+		Addr:    ":8070",
 		Handler: server,
 	}
 	log.Println("srv  ", srv.Addr)

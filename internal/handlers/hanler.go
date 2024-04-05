@@ -11,6 +11,7 @@ var NewHandler = fx.Provide(newHandler)
 type IHandler interface {
 	GetLanguage() http.HandlerFunc
 	GetInfrastructure() http.HandlerFunc
+	GetCategoryInfrastructure() http.HandlerFunc
 }
 type dependencies struct {
 	fx.In

@@ -29,14 +29,29 @@ type GetLesson struct {
 type Language struct {
 	Id          int64  `json:"id"`
 	Name        string `json:"name"`
+	Code        string `json:"code"`
 	Description string `json:"description"`
 }
 
 type Infrastructure struct {
 	Id          int64  `json:"id"`
-	Name        string `json:"name"`
+	Name        string `json:"name" gorm:"column:name"`
 	Description string `json:"description"`
 	Active      bool   `json:"active"`
+}
+
+type InfrastructureAll struct {
+	Id         int64  `json:"id"`
+	Name       string `json:"name"`
+	Title      string `json:"title"`
+	Address    string `json:"address"`
+	Phone      string `json:"phone"`
+	Link       string `json:"link"`
+	Mail       string `json:"email"`
+	Descriptin string `json:"descriptin"`
+	Image      string `json:"image"`
+	Active     bool   `json:"active"`
+	Created_at string `json:"created_at"`
 }
 
 type GetCourseNew struct {

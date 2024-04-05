@@ -28,7 +28,6 @@ func newPostgres(dp dependencies) IPostgres {
 	user := "app"
 	dbname := "db"
 	password := "pass"
-
 	connString := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Dushanbe", host, user, password, dbname, port)
 	conn, err := gorm.Open(postgresDriver.Open(connString))
 
